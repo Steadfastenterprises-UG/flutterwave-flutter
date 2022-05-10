@@ -189,7 +189,8 @@ class _MyHomePageState extends State<MyHomePage> {
       phoneNumber: this.phoneNumberController.text.trim(),
       acceptAccountPayment: true,
       acceptCardPayment: true,
-      acceptUSSDPayment: true
+      acceptUSSDPayment: true,
+      acceptVoucherPayment: false,
     );
     final response = await flutterwave.initializeForUiPayments();
     if (response != null) {

@@ -46,6 +46,7 @@ class _PayWithMobileMoneyState extends State<PayWithMobileMoney> {
     this._phoneNumberController.text = initialPhoneNumber;
 
     final String currency = this.widget._paymentManager.currency;
+    final MobileMoneyPaymentManager pm = this.widget._paymentManager;
     return MaterialApp(
       debugShowCheckedModeBanner: widget._paymentManager.isDebugMode,
       home: Scaffold(
@@ -72,14 +73,23 @@ class _PayWithMobileMoneyState extends State<PayWithMobileMoney> {
                         : null,
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                    width: double.infinity,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Voucher",
-                        hintText: "voucher",
+                    margin: EdgeInsets.only(top: 10),
+                    child: Text("Total amount to pay ${pm.currency} ${pm.amount}", style: TextStyle(
+                      fontSize: 16
+                    )),
+                  ),
+                  Visibility(
+                    visible: false,
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                      width: double.infinity,
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          labelText: "Voucher",
+                          hintText: "voucher",
+                        ),
+                        controller: this._voucherController,
                       ),
-                      controller: this._voucherController,
                     ),
                   ),
                   Visibility(

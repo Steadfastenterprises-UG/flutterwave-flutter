@@ -27,6 +27,7 @@ class Flutterwave {
   bool acceptUgandaPayment;
   bool acceptFrancophoneMobileMoney;
   bool acceptBankTransfer;
+  bool acceptVoucherPayment;
   String phoneNumber;
   int? frequency;
   int duration;
@@ -61,7 +62,8 @@ class Flutterwave {
     this.acceptUgandaPayment = false,
     this.acceptFrancophoneMobileMoney = false,
     this.acceptBankTransfer = false,
-    this.redirectUrl = ""
+    this.redirectUrl = "",
+    this.acceptVoucherPayment = false
 
   }) {
     _validateKeys();
@@ -226,6 +228,7 @@ Future<ChargeResponse> initializeForUiPayments() async {
       acceptUgandaPayment: this.acceptUgandaPayment,
       acceptBankTransferPayment: this.acceptBankTransfer,
       acceptFancophoneMobileMoney: this.acceptFrancophoneMobileMoney,
+      acceptVoucherPayment: this.acceptVoucherPayment,
       country: this._setCountry());
 
   final chargeResponse = await this._launchPaymentScreen(paymentManager);
