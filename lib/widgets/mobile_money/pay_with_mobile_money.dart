@@ -138,9 +138,11 @@ class _PayWithMobileMoneyState extends State<PayWithMobileMoney> {
                     width: double.infinity,
                     height: 50,
                     margin: EdgeInsets.fromLTRB(0, 40, 0, 20),
-                    child: RaisedButton(
+                    child: ElevatedButton(
                       onPressed: this._onPayPressed,
-                      color: Colors.orange,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange,
+                      ),
                       child: Text(
                         "Pay with ${this._getPageTitle(currency)}",
                         textAlign: TextAlign.center,
@@ -322,7 +324,7 @@ class _PayWithMobileMoneyState extends State<PayWithMobileMoney> {
         textAlign: TextAlign.center,
       ),
     );
-    this._scaffoldKey.currentState!.showSnackBar(snackBar);
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   void _handlePayment() async {
